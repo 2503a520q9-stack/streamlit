@@ -1,0 +1,69 @@
+{
+  "policy_name": "PhysicalCalendarSnapshotPolicy",
+  "description": "Grandfather-Father-Son (GFS) Snapshot Lifecycle Policy mapped to physical calendar",
+  "target_tags": {
+    "Backup": "Daily"
+  },
+  "schedules": {
+    "daily": {
+      "enabled": true,
+      "time_utc": "01:00",
+      "retention_count": 7,
+      "retention_days": 7,
+      "tier": "Daily",
+      "description": "Daily snapshot retained for 7 calendar days"
+    },
+    "weekly": {
+      "enabled": true,
+      "day_of_week": "Sunday",
+      "time_utc": "02:00",
+      "retention_count": 4,
+      "retention_days": 28,
+      "tier": "Weekly",
+      "description": "Weekly snapshot taken every Sunday, retained for 4 weeks"
+    },
+    "monthly": {
+      "enabled": true,
+      "day_of_month": 1,
+      "time_utc": "03:00",
+      "retention_count": 12,
+      "retention_days": 365,
+      "tier": "Monthly",
+      "description": "Monthly snapshot taken on 1st of every month, retained for 1 year"
+    },
+    "yearly": {
+      "enabled": true,
+      "month": 1,
+      "day_of_month": 1,
+      "time_utc": "04:00",
+      "retention_count": 3,
+      "retention_days": 1095,
+      "tier": "Yearly",
+      "description": "Yearly snapshot taken on Jan 1st, retained for 3 years"
+    }
+  },
+  "blackout_calendar": [
+    {
+      "date": "2026-12-25",
+      "reason": "Christmas Holiday Freeze"
+    },
+    {
+      "date": "2026-12-31",
+      "reason": "Fiscal Year-End Freeze"
+    },
+    {
+      "date": "2027-01-01",
+      "reason": "New Year Maintenance Window"
+    }
+  ],
+  "budget_guard": {
+    "learner_lab_total_budget_usd": 100.0,
+    "ebs_cost_per_gb_month": 0.05,
+    "max_snapshot_gb_warning": 50,
+    "alert_threshold_usd": 5.0
+  },
+  "learner_lab": {
+    "iam_role_name": "LabRole",
+    "region": "us-east-1"
+  }
+}

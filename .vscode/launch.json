@@ -1,0 +1,76 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "1. Launch Streamlit Calendar Dashboard",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "streamlit",
+      "args": ["run", "app.py", "--server.port=8501", "--server.headless=true"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "2. CLI - Check Status & Budget (Live / Auto-detect)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["status"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "3. CLI - Check Status (Offline Mock Mode)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["--mock", "status"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "4. CLI - Physical Calendar Forecast (30 Days)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["forecast", "--days", "30"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "5. CLI - Run Today's Calendar Backup Cycle",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["run-schedule"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "6. CLI - Retention Audit (Dry-Run Purge)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["purge", "--dry-run"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "7. CLI - Deploy AWS DLM Policy (LabRole)",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/cli.py",
+      "args": ["deploy-dlm"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "8. Run Automated Unit Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/test_project.py",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}
